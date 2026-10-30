@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Cloud LMS Portal</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      background:#eef2ff;
+      color:#333;
+    }
+
+    header{
+      background:#1e3a8a;
+      color:white;
+      padding:18px 30px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h2{
+      font-size:28px;
+    }
+
+    .top-right{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .profile{
+      background:white;
+      color:#1e3a8a;
+      padding:8px 15px;
+      border-radius:30px;
+      font-weight:bold;
+    }
+
+    .logout-btn{
+      background:#ef4444;
+      color:white;
+      border:none;
+      padding:10px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .logout-btn:hover{
+      background:#dc2626;
+    }
+
+    .container{
+      padding:30px;
+    }
+
+    .welcome-banner{
+      background:linear-gradient(to right,#2563eb,#1d4ed8);
+      color:white;
+      padding:30px;
+      border-radius:15px;
+      margin-bottom:30px;
+    }
+
+    .dashboard-stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+      margin-bottom:30px;
+    }
+
+    .stat-card{
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+
+    .stat-card h2{
+      color:#2563eb;
+      margin-bottom:10px;
+      font-size:32px;
+    }
+
+    .card-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card h3{
+      color:#1e3a8a;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      margin-bottom:15px;
+      color:#555;
+    }
+
+    button{
+      background:#2563eb;
+      color:white;
+      border:none;
+      padding:10px 15px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    button:hover{
+      background:#1d4ed8;
+    }
+
+    #output{
+      margin-top:30px;
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:15px;
+    }
+
+    table th{
+      background:#2563eb;
+      color:white;
+      padding:12px;
+    }
+
+    table td{
+      padding:12px;
+      border:1px solid #ddd;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+      background:#1e3a8a;
+      color:white;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<header>
+
+  <h2>Cloud LMS Portal</h2>
+
+  <div class="top-right">
+
+    <div class="profile">
+      Welcome, Aravind
+    </div>
+
+    <button class="logout-btn" onclick="logout()">
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+<div class="container">
+
+  <div class="welcome-banner">
+
+    <h1>Welcome to Learning Management System 🚀</h1>
+
+    <p>
+      Manage courses, assignments, attendance,
+      study materials and cloud training progress.
+    </p>
+
+  </div>
+
+  <div class="dashboard-stats">
+
+    <div class="stat-card">
+      <h2>4</h2>
+      <p>Courses</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>92%</h2>
+      <p>Attendance</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>3</h2>
+      <p>Assignments</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>12</h2>
+      <p>Materials</p>
+    </div>
+
+  </div>
+
+  <div class="card-container">
+
+    <div class="card">
+      <h3>📘 Courses</h3>
+      <p>View enrolled AWS and DevOps courses.</p>
+      <button onclick="viewCourses()">Open</button>
+    </div>
+
+    <div class="card">
+      <h3>📝 Assignments</h3>
+      <p>Track assignment submissions and deadlines.</p>
+      <button onclick="viewAssignments()">Open</button>
+    </div>
+
+    <div class="card">
+      <h3>📊 Attendance</h3>
+      <p>Check attendance percentage and reports.</p>
+      <button onclick="viewAttendance()">Open</button>
+    </div>
+
+    <div class="card">
+      <h3>📂 Study Materials</h3>
+      <p>Download PDFs, notes and lab manuals.</p>
+      <button onclick="viewMaterials()">Open</button>
+    </div>
+
+    <div class="card">
+      <h3>🔔 Notifications</h3>
+      <p>Latest announcements and updates.</p>
+      <button onclick="viewNotifications()">Open</button>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Progress</h3>
+      <p>Track your learning progress.</p>
+      <button onclick="viewProgress()">Open</button>
+    </div>
+
+  </div>
+
+  <div id="output">
+
+    <h2>Dashboard Ready</h2>
+
+    <p>Select a module to view details.</p>
+
+  </div>
+
+</div>
+
+<footer>
+
+  LMS Portal © 2026 | AWS Cloud & DevOps Training
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
